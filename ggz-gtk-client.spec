@@ -1,6 +1,6 @@
 %define name	ggz-gtk-client
 %define version 0.0.14
-%define release %mkrel 1
+%define release %mkrel 2
 
 
 %define libname %mklibname %{name}
@@ -23,7 +23,7 @@ Source:		%{name}-%{version}.tar.bz2
 
 BuildRequires:	libggz-devel = %{libggz_version}
 BuildRequires:	ggz-client-libs-devel = %{ggz_client_libs_version}
-BuildRequires:	gtk+2-devel desktop-file-utils gaim-devel
+BuildRequires:	gtk+2-devel desktop-file-utils
 Requires:	libggz = %{libggz_version}
 Requires:	ggz-client-libs = %{ggz_client_libs_version}
 Requires:	ggz-game-modules = %{version}
@@ -57,12 +57,12 @@ building GGZ Gaming Zone GTK2+ client.
 %setup -q
 
 %build
-%configure2_5x \
+%configure \
 	--bindir=%{_gamesbindir} \
 	--datadir="\${prefix}/share" \
 	--with-libggz-libraries=%{_libdir} \
 	--with-ggzcore-libraries=%{_libdir} \
-	--with-ggzmod-libraries=%{_libdir}
+	--with-ggzmod-libraries=%{_libdir} \
 
 %make
 
@@ -70,24 +70,11 @@ building GGZ Gaming Zone GTK2+ client.
 rm -rf %{buildroot}
 %makeinstall_std
 
-# menu entry
-install -d -m 0755 %{buildroot}%{_menudir}
-cat > %{buildroot}%{_menudir}/%{name} <<_EOF_
-?package(%{name}): \
- command="%{_gamesbindir}/ggz-gtk" \
- icon="other_amusement.png" \
- longtitle="GGZ Gaming Zone game client with GTK+ interface" \
- needs="x11" \
- section="More Applications/Games/Other" \
- title="GGZ GTK+ Game Client" \
- xdg="true"
-_EOF_
 
 desktop-file-install --vendor="" \
   --remove-category="Application" \
   --remove-key="Encoding" \
-  --add-category="GTK" \
-  --add-category="X-MandrivaLinux-MoreApplications-Games-Other;Game" \
+  --add-category="GTK;Game" \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
 
 %find_lang ggz-gtk
@@ -112,7 +99,6 @@ rm -rf %{buildroot}
 %{_datadir}/ggz/ggz-gtk-client/*
 %{_datadir}/ggz/help/*
 %{_mandir}/man?/*
-%{_menudir}/%{name}
 
 %files -n %{libname}
 %defattr(-,root,root)
