@@ -16,6 +16,7 @@ Release:	%{release}
 License:	GPL
 Group:		Games/Other
 URL:		http://ggzgamingzone.org/
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 # http://download.sf.net/ggz/
 Source:		%{name}-%{version}.tar.bz2
