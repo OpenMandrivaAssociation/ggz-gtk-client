@@ -1,9 +1,10 @@
 %define name	ggz-gtk-client
 %define version 0.0.14.1
-%define release %mkrel 1
+%define release %mkrel 2
 
-
-%define libname %mklibname %{name}
+%define major 1
+%define libname %mklibname %{name} %{major}
+%define develname %mklibname -d %{name}
 
 %define libggz_version %{version}
 
@@ -34,19 +35,19 @@ The official GGZ Gaming Zone client with GTK+ user interface.
 %package -n	%{libname}
 Summary:	GGZ Library client with GTK+ user interface
 Group:		Games/Other
-Provides:	%{libname} = %{version}
+Obsoletes:	%mklibname %name < 0.0.14.1-2
 
 %description -n	%{libname}
 The official GGZ Gaming Zone client with GTK+ user interface.
 
-%package -n	%{libname}-devel
+%package -n	%{develname}
 Summary:	Development files for GGZ Gaming Zone client with GTK+ user interface
 Group:		Development/Other
 Requires:	%{libname} = %{version}
 Requires:	libggz-devel = %{libggz_version}
-Provides: 	%{libname}-devel
+Provides: 	%{name}-devel = %{version}
 
-%description -n	%{libname}-devel
+%description -n	%{develname}
 The GGZ client libraries are necessary for running and/or developing
 GGZ Gaming Zone clients and games.
 
@@ -57,7 +58,7 @@ building GGZ Gaming Zone GTK2+ client.
 %setup -q
 
 %build
-%configure \
+%configure2_5x \
 	--bindir=%{_gamesbindir} \
 	--datadir="\${prefix}/share" \
 	--with-libggz-libraries=%{_libdir} \
@@ -102,14 +103,12 @@ rm -rf %{buildroot}
 
 %files -n %{libname}
 %defattr(-,root,root)
-%{_libdir}/libggz-gtk.so.*
+%{_libdir}/libggz-gtk.so.%{major}*
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %doc COPYING ChangeLog
 %{_includedir}/*
 %{_libdir}/lib*.a
 %{_libdir}/lib*.la
 %{_libdir}/lib*.so
-
-
