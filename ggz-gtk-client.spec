@@ -1,6 +1,6 @@
 %define name	ggz-gtk-client
 %define version 0.0.14.1
-%define release %mkrel 3
+%define release %mkrel 4
 
 %define major 1
 %define libname %mklibname %{name} %{major}
@@ -27,7 +27,7 @@ BuildRequires:	ggz-client-libs-devel = %{ggz_client_libs_version}
 BuildRequires:	gtk+2-devel desktop-file-utils
 Requires:	libggz = %{libggz_version}
 Requires:	ggz-client-libs = %{ggz_client_libs_version}
-Requires:	ggz-game-modules = %{version}
+Suggests:	ggz-game-modules = %{version}
 
 %description
 The official GGZ Gaming Zone client with GTK+ user interface.
