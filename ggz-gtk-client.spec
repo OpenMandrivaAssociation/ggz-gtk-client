@@ -80,11 +80,15 @@ desktop-file-install --vendor="" \
 
 %find_lang ggz-gtk
 
+%if %mdkversion < 200900
 %post
 %update_menus
+%endif
 
+%if %mdkversion < 200900
 %postun
 %clean_menus
+%endif
 
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
