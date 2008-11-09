@@ -21,7 +21,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 # http://download.sf.net/ggz/
 Source:		%{name}-%{version}.tar.bz2
-
+Patch0:		ggz-gtk-client-0.0.14.1-linkage_fix.diff
 BuildRequires:	libggz-devel = %{libggz_version}
 BuildRequires:	ggz-client-libs-devel = %{ggz_client_libs_version}
 BuildRequires:	gtk+2-devel desktop-file-utils
@@ -56,8 +56,11 @@ building GGZ Gaming Zone GTK2+ client.
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
+autoreconf -fis
+
 %configure2_5x \
 	--bindir=%{_gamesbindir} \
 	--datadir="\${prefix}/share" \
