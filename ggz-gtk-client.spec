@@ -1,6 +1,6 @@
 %define name	ggz-gtk-client
 %define version 0.0.14.1
-%define release %mkrel 10
+%define release %mkrel 11
 
 %define major 1
 %define libname %mklibname %{name} %{major}
@@ -35,7 +35,7 @@ The official GGZ Gaming Zone client with GTK+ user interface.
 %package -n	%{libname}
 Summary:	GGZ Library client with GTK+ user interface
 Group:		Games/Other
-Obsoletes:	%{mklibname %name} < 0.0.14.1-2
+Obsoletes:	%mklibname %{name} < 0.0.14.1-2
 
 %description -n	%{libname}
 The official GGZ Gaming Zone client with GTK+ user interface.
@@ -79,7 +79,7 @@ desktop-file-install --vendor="" \
   --remove-category="Application" \
   --remove-key="Encoding" \
   --add-category="GTK;Game" \
-  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
+  --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
 %find_lang ggz-gtk
 
