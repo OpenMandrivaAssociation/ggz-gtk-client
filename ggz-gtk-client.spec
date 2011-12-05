@@ -1,6 +1,6 @@
 %define name	ggz-gtk-client
 %define version 0.0.14.1
-%define release %mkrel 11
+%define release %mkrel 12
 
 %define major 1
 %define libname %mklibname %{name} %{major}
