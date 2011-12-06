@@ -17,9 +17,12 @@ URL:		http://ggzgamingzone.org/
 # http://download.sf.net/ggz/
 Source0:	%{name}-%{version}.tar.bz2
 Patch0:		ggz-gtk-client-0.0.14.1-linkage_fix.diff
+
+BuildRequires:	desktop-file-utils
 BuildRequires:	libggz-devel = %{libggz_version}
 BuildRequires:	ggz-client-libs-devel = %{ggz_client_libs_version}
-BuildRequires:	gtk+2-devel desktop-file-utils
+BuildRequires:	gtk+2-devel
+BuildRequires:	pkgconfig(xft)
 Requires:	ggz-client-libs = %{ggz_client_libs_version}
 Suggests:	ggz-game-modules = %{version}
 
