@@ -5,7 +5,7 @@
 Name:		ggz-gtk-client
 Summary:	GGZ Client with GTK+ user interface
 Version:	0.0.14.1
-Release:	18
+Release:	19
 License:	GPLv2
 Group:		Games/Other
 Url:		http://ggzgamingzone.org/
