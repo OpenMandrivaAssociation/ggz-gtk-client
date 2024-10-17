@@ -8,7 +8,7 @@ Version:	0.0.14.1
 Release:	19
 License:	GPLv2
 Group:		Games/Other
-Url:		http://ggzgamingzone.org/
+Url:		https://ggzgamingzone.org/
 # http://download.sf.net/ggz/
 Source0:	%{name}-%{version}.tar.bz2
 Patch0:		ggz-gtk-client-0.0.14.1-linkage_fix.diff
