@@ -13,6 +13,11 @@ Url:		https://ggzgamingzone.org/
 Source0:	%{name}-%{version}.tar.bz2
 Patch0:		ggz-gtk-client-0.0.14.1-linkage_fix.diff
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	desktop-file-utils
 BuildRequires:	libggz-devel
 BuildRequires:	ggz-client-libs-devel
